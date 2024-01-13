@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Student Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+		body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.pexels.com/photos/574283/pexels-photo-574283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); /* Replace 'your-background-image.jpg' with the actual image file path */
+            background-size: cover;
+            background-position: center;
+			filter: blur(0px);/* Adjust the blur intensity as needed */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+			position: relative;
+			z-index: 2;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+		form {
+            position: relative;
+            z-index: 2; /* Adjust the z-index to ensure the form appears above the pseudo-element */
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input, select {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/students/create-student" method="post">
+        <h3>Add Student</h3>
+
+        <!-- Your form fields go here -->
+		<!-- Your form fields go here -->
+<fieldset>
+    <label for="batch">Batch</label>
+    <div class="mb-3">
+        <input type="text" name="batch" />
+    </div>
+</fieldset>
+
+<fieldset>
+    <div class="mb-3">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
+    </div>
+    <div class="mb-3">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="abc@gmail.com" name="email" />
+    </div>
+    <div class="mb-3">
+        <label for="contactNumber" class="form-label">Mobile Number</label>
+        <input type="text" class="form-control" id="contactNumber" name="contactNumber" />
+    </div>
+    <div class="mb-3">
+        <label for="college" class="form-label">College Name</label>
+        <input type="text" class="form-control" id="college" name="college" />
+    </div>
+    <div class="mb-3">
+        <label for="placement" class="form-label">Placement Status</label>
+        <select class="form-select" aria-label="Default select example" name="placement" id="placement">
+            <option value="Placed">Placed</option>
+            <option value="Not Placed">Not Placed</option>
+        </select>
+    </div>
+</fieldset>
+
+<fieldset>
+    <div class="mb-3" style="display: flex; justify-content: space-between">
+        <div class="mb-3 p-1">
+            <label for="dsa" class="form-label">DSA</label>
+            <input type="text" class="form-control" id="dsa" name="dsa" />
+        </div>
+        <div class="mb-3 p-1">
+            <label for="webd" class="form-label">Web Development</label>
+            <input type="text" class="form-control" id="webd" name="webd" />
+        </div>
+        <div class="mb-3 p-1">
+            <label for="react" class="form-label">React</label>
+            <input type="text" class="form-control" id="react" name="react" />
+        </div>
+    </div>
+</fieldset>
+
+
+        <button type="submit" class="btn btn-success align-self-center">Create Student</button>
+    </form>
+</body>
+</html>

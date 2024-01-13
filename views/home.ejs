@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?q=80&w=2049&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Add your background image URL here */
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(5px); /* Adjust the blur effect */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            background-color: rgba(51, 51, 51, 0.7); /* Adjust the background color and opacity */
+            color: white;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav form {
+            display: flex;
+        }
+
+        div {
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        td a {
+            color: #2196F3;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-danger {
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <% if (locals.user) { %>
+        <nav>
+            <div>
+                <a href="/">Home</a>
+            </div>
+            <form>
+                <a href="/company/home">Interview</a>
+                <a href="/users/download-csv">Download</a>
+                <a href="/users/signout">Sign out</a>
+            </form>
+        </nav>
+        <% } %>
+    </header>
+    <div>
+        <br />
+
+        <div>
+            <div>
+                <!-- Display a heading for the list of students -->
+                <h2>List of Students:</h2>
+            </div>
+
+            <div>
+                <!-- Button to add a new student -->
+                <a href="/students/create" class="button" type="button">+ Add Student</a>
+            </div>
+        </div>
+
+        <!-- Check if there are students in the list -->
+        <% if(students.length > 0) {%>
+        <div>
+            <!-- Display a table with student information -->
+            <table>
+                <thead>
+                    <tr>
+                        <!-- Table column headers -->
+                        <th scope="col">Batch</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">DSA</th>
+                        <th scope="col">WEB</th>
+                        <th scope="col">REACT</th>
+                        <th scope="col">Interview</th>
+                        <th scope="col" class="text-end">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Loop through each student and display their information in a table row -->
+                    <% for(let student of students) {%>
+                    <tr>
+                        <!-- Display each student's information in corresponding table cells -->
+                        <th scope="row"><%=student.batch%></th>
+                        <td><%=student.name%></td>
+                        <td><%=student.email%></td>
+                        <td><%=student.contactNumber%></td>
+                        <td><%=student.dsa%></td>
+                        <td><%=student.webd%></td>
+                        <td><%=student.react%></td>
+                        <!-- Check if the student has interview details -->
+                        <% if(student.interviews.length) {%>
+                        <td>
+                            <!-- If yes, loop through each interview and display company names -->
+                            <% for(let company of student.interviews){%>
+                            <a href=" " id="compnay_name"><%=company.company%></a>
+                            <%}%>
+                        </td>
+                        <%}else{%>
+                        <!-- If no interviews, display "NONE" -->
+                        <td>NONE</td>
+                        <%}%>
+                        <!-- Display a delete button with a link to delete the student -->
+                        <td style="display: flex; justify-content: space-around; align-items: center">
+                            <a href="/students/delete/<%=student.id%>" type="button" class="btn btn-danger btn-small">Delete</a>
+                        </td>
+                    </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <%}else{%>
+        <!-- If no students, display a message -->
+        <div class="w-75 mx-auto mt-5">
+            <h2>No Records Found</h2>
+        </div>
+        <%}%>
+    </div>
+</body>
+</html>
